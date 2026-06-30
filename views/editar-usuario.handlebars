@@ -1,0 +1,29 @@
+<h2>Editar Usuário</h2>
+
+<!-- O action envia os dados para a rota de salvar o UPDATE -->
+<h2>Editar Usuário</h2>
+
+<!-- O action envia os dados para a rota de salvar o UPDATE -->
+<form action="/usuarios/editar/{{usuario.id}}" method="POST">
+    <div>
+        <label>Nome Completo</label>
+        <input type="text" name="nome" value="{{usuario.nome}}" required>
+    </div>
+
+    <div>
+        <label>Tipo de Perfil</label>
+        <select name="tipo">
+            <!-- Validação simples para manter selecionado o tipo atual -->
+            <option value="estudante" {{#if (eq usuario.tipo 'estudante')}}selected{{/if}}>Estudante</option>
+            <option value="professor" {{#if (eq usuario.tipo 'professor')}}selected{{/if}}>Professor</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Matrícula / Código de acesso</label>
+        <input type="text" name="matricula" value="{{usuario.matricula}}" required>
+    </div>
+
+    <button type="submit" style="background-color: #28a745; color: white;">Salvar Alterações</button>
+    <a href="/usuarios">Cancelar</a>
+</form>
