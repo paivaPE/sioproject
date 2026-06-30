@@ -1,0 +1,59 @@
+<div class="sio-topbar">
+    <a href="/dashboard" class="btn-voltar">⬅</a>
+    <div class="boas-vindas">SIO - Painel de Consulta do Responsável (Minhas Ocorrências)</div>
+</div>
+
+<div class="main-content" style="padding: 20px 10%;">
+    <div class="box-titulo">Consultar Ocorrências do Aluno</div>
+    <div class="box-corpo">
+        <p style="margin-bottom: 15px; color: #555;">Selecione o estudante abaixo para verificar o histórico de ocorrências registradas:</p>
+        
+        <form action="/painel-pais/busca" method="GET" style="display: flex; gap: 15px; align-items: flex-end;">
+            <div style="flex: 1;">
+                <label style="font-weight: bold; color: #103154;">Nome do Aluno:</label>
+                <select name="aluno_id" class="input-sio-cinza" required>
+                    <option value="">Selecione o aluno...</option>
+                    {{#each estudantes}}
+                        <option value="{{this.id}}">{{this.nome}} (Matrícula: {{this.matricula}})</option>
+                    {{/each}}
+                </select>
+            </div>
+            <button type="submit" class="btn-sio-enviar" style="padding: 11px 30px;">Buscar Ocorrências</button>
+        </form>
+    </div>
+
+    <!-- Só mostra a tabela se o pai clicou em Buscar -->
+    {{#if buscou}}
+        <div class="box-titulo">Histórico de Ocorrências Encontradas</div>
+        <div class="box-corpo">
+            <table class="sio-table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Turma</th>
+                        <th>Infração / Motivo</th>
+                        <th>Nível</th>
+                        <th>Descrição dos Fatos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each ocorrencias}}
+                    <tr>
+                        <td>{{this.data_ocorrencia}}</td>
+                        <td>{{this.turma}}</td>
+                        <td><strong>{{this.tipo_infracao}}</strong></td>
+                        <td>{{this.nivel}}</td>
+                        <td>{{this.descricao}}</td>
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: #4caf50; padding: 20px; font-weight: bold;">
+                            Nenhuma ocorrência registrada para este estudante! 🎉
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    {{/if}}
+</div>

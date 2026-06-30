@@ -61,30 +61,36 @@ app.get('/dashboard', async (req, res) => {
  * ROTAS DO SEU MÓDULO: Gerenciamento de Usuários (Nicholas)
  * Acionado ao clicar no card "LISTA DE ALUNOS"
  */
+// 1. GET: Renderiza a página e lista todos os usuários já cadastrados
 app.get('/usuarios', async (req, res) => {
     try {
         const usuarios = await Usuario.findAll();
         res.render('usuarios', { usuarios });
     } catch (err) {
-        res.status(500).send("Erro ao listar usuários.");
+        console.error("Erro ao buscar usuários:", err);
+        res.status(500).send("Erro ao listar usuários no banco.");
     }
 });
 
+// 2. POST: Recebe os dados do formulário e cria o usuário no banco
 app.post('/usuarios/novo', async (req, res) => {
     try {
         const { nome, tipo, matricula } = req.body;
         await Usuario.create({ nome, tipo, matricula });
-        res.redirect('/usuarios');
+        res.redirect('/usuarios'); // Redireciona de volta para atualizar a lista
     } catch (err) {
-        res.status(500).send("Erro ao cadastrar usuário.");
+        console.error("Erro ao criar usuário:", err);
+        res.status(500).send("Erro ao cadastrar novo usuário.");
     }
 });
 
+// 3. POST: Deleta o usuário através do ID passado na URL
 app.post('/usuarios/deletar/:id', async (req, res) => {
     try {
         await Usuario.destroy({ where: { id: req.params.id } });
-        res.redirect('/usuarios');
+        res.redirect('/usuarios'); // Redireciona de volta para atualizar a lista
     } catch (err) {
+        console.error("Erro ao deletar usuário:", err);
         res.status(500).send("Erro ao remover usuário.");
     }
 });
@@ -93,13 +99,38 @@ app.post('/usuarios/deletar/:id', async (req, res) => {
  * ROTAS DO SEU MÓDULO: Painel de Consulta dos Pais (Nicholas - História H5)
  * Acionado ao clicar no card "MINHAS OCORRÊNCIAS"
  */
+// 1. Rota para abrir a tela inicial do painel (Apenas mostra o select com os alunos)
 app.get('/painel-pais', async (req, res) => {
     try {
-        // Busca os estudantes para preencher um select e simular o acesso do pai
         const estudantes = await Usuario.findAll({ where: { tipo: 'estudante' } });
-        res.render('painel_pais', { estudantes });
+        res.render('painel_pais', { estudantes, buscou: false });
     } catch (err) {
         res.status(500).send("Erro ao carregar painel dos pais.");
+    }
+});
+
+// 2. Rota que faz a busca real das ocorrências daquele aluno no banco de dados
+app.get('/painel-pais/busca', async (req, res) => {
+    try {
+        const { aluno_id } = req.query;
+        
+        // Recarrega a lista para manter o select preenchido na tela
+        const estudantes = await Usuario.findAll({ where: { tipo: 'estudante' } });
+
+        // Busca no banco as ocorrências que pertencem ao ID do aluno selecionado
+        const ocorrencias = await Ocorrencia.findAll({
+            where: { aluno_id: aluno_id }
+        });
+
+        // Renderiza a página liberando a tabela com os resultados
+        res.render('painel_pais', { 
+            estudantes, 
+            ocorrencias, 
+            buscou: true 
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Erro ao processar busca de ocorrências.");
     }
 });
 
