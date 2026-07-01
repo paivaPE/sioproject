@@ -1,0 +1,454 @@
+/* Configurações Globais e Paleta de Cores do SIO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+/* Topbar Azul Escuro Corporativo */
+.sio-topbar {
+    background-color: #103154;
+    color: #ffffff;
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-voltar {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.btn-voltar:hover {
+    transform: translateX(-3px);
+}
+
+.boas-vindas {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Conteúdo Centralizado */
+.main-content {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Boxes Estilo Painel Integrado */
+.box-titulo {
+    background-color: #1a4a75;
+    color: white;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 8px 8px 0 0;
+    font-size: 16px;
+    margin-top: 25px;
+}
+
+.box-corpo {
+    background: white;
+    padding: 25px;
+    border-radius: 0 0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+/* Formulários Alinhados em Colunas */
+.form-linha {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.form-coluna {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-coluna label {
+    font-weight: 600;
+    color: #103154;
+    font-size: 14px;
+}
+
+/* Inputs Modernos e Arredondados */
+.input-sio-cinza {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fafafa;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-sio-cinza:focus {
+    border-color: #1a4a75;
+    background-color: #fff;
+}
+
+/* Botão de Ação Principal */
+.btn-sio-enviar {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.btn-sio-enviar:hover {
+    background-color: #219653;
+}
+
+/* Tabelas Estilizadas e Alinhadas */
+.sio-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.sio-table th {
+    background-color: #f1f4f7;
+    color: #103154;
+    text-align: left;
+    padding: 12px 15px;
+    font-weight: 600;
+    border-bottom: 2px solid #ddd;
+    font-size: 14px;
+}
+
+.sio-table td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #444;
+}
+
+.sio-table tr:hover {
+    background-color: #fcfcfc;
+}
+
+/* Indicadores Visuais para os Níveis de Ocorrência */
+.circulo-cor {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.leve { background-color: #f1c40f; }
+.média { background-color: #e67e22; }
+.grave { background-color: #e74c3c; }
+
+/* =============================================================
+   ESTILIZAÇÃO DA TELA DE ENTRADA / SELEÇÃO DE PERFIL (image_661459.jpg)
+   ============================================================= */
+.body-entrada {
+    background: linear-gradient(180deg, #3fa5f1 0%, #a5dcff 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito das folhagens nos cantos da imagem */
+.body-entrada::before, .body-entrada::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    pointer-events: none;
+}
+/* Canto superior direito */
+.body-entrada::before {
+    top: -50px;
+    right: -50px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M100,0 C80,20 50,20 40,40 C30,60 50,90 30,100" fill="%2327ae60" opacity="0.7"/><path d="M100,0 C70,10 60,30 50,50 C40,70 60,80 50,100" fill="%23219653"/></svg>');
+}
+/* Canto inferior esquerdo */
+.body-entrada::after {
+    bottom: -50px;
+    left: -50px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,100 C20,80 20,50 40,40 C60,30 90,50 100,30" fill="%232ecc71" opacity="0.6"/><path d="M0,100 C10,70 30,60 50,50 C70,40 80,60 100,50" fill="%2327ae60"/></svg>');
+}
+
+/* Container Centralizado */
+.entrada-container {
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    padding: 20px;
+    z-index: 2;
+}
+
+/* Logo SIO improvisado via CSS enquanto você não coloca a imagem real */
+.logo-sio-provisorio {
+    font-size: 54px;
+    font-weight: 900;
+    color: #103154;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 0px #fff;
+}
+.logo-subtitulo {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #1a4a75;
+    letter-spacing: 3px;
+    margin-bottom: 35px;
+}
+
+/* Texto de Orientação */
+.entrada-texto {
+    color: #1a4a75;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    padding: 0 15px;
+}
+
+/* Botões em Formato de Pílula com Degradê Transicional */
+.btn-perfil {
+    display: block;
+    width: 80%;
+    margin: 0 auto 20px auto;
+    padding: 14px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #56ccf2 0%, #0056b3 100%);
+    border: 2px solid navy;
+    border-radius: 50px; /* Formato de Pílula da imagem */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-perfil:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(90deg, #0056b3 0%, #56ccf2 100%);
+}
+
+/* Container da Imagem do Logo */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px; /* Espaço entre o logo e o texto */
+    width: 100%;
+}
+
+/* Configuração da Imagem do Logo */
+.logo-img {
+    max-width: 320px; /* Controla a largura máxima para ficar idêntico ao Canva */
+    height: auto;     /* Mantém a proporção correta sem achatar a imagem */
+    object-fit: contain;
+}
+
+/* =============================================================
+   ESTILIZAÇÃO DA DASHBOARD PRINCIPAL - VERSÃO AJUSTADA
+   ============================================================= */
+
+/* Topbar mais larga (Aumentamos o padding de 10px para 22px) */
+.sio-dashboard-topbar {
+    background: linear-gradient(90deg, #3fa5f1 0%, #a5dcff 100%);
+    padding: 22px 80px; 
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Seta de voltar reposicionada e pintada em Navy (#103154) */
+.btn-voltar-dashboard {
+    font-size: 45px;      /* Seta ligeiramente maior */
+    color: #103154;       /* Alterado para a cor Navy do protótipo */
+    text-decoration: none;
+    margin-right: 25px;
+    font-weight: 900;
+    z-index: 5;
+    line-height: 1;
+    transition: transform 0.2s, color 0.2s;
+    padding-right: 10px;
+}
+.btn-voltar-dashboard:hover {
+    transform: scale(1.1);
+    color: #1a4a75;
+}
+
+/* Folhagens decorativas mantidas nos cantos */
+.sio-dashboard-topbar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 140px;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M100,0 C80,20 50,10 40,40 C30,60 50,90 0,100 L100,100 Z" fill="%2327ae60" opacity="0.8"/><path d="M100,0 C70,10 60,30 50,50 L100,100 Z" fill="%23219653"/></svg>');
+    background-size: cover;
+    pointer-events: none;
+}
+
+.sio-dashboard-topbar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 140px;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 C20,20 50,10 60,40 C70,60 50,90 100,100 L0,100 Z" fill="%232ecc71" opacity="0.5"/><path d="M0,0 C30,10 40,30 50,50 L0,100 Z" fill="%2327ae60"/></svg>');
+    background-size: cover;
+    pointer-events: none;
+    transform: scaleX(-1);
+}
+
+.logo-dashboard-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 5;
+}
+
+.logo-dash-img {
+    height: 55px;
+    width: auto;
+}
+
+.texto-boas-vindas-dash {
+    margin-left: 40px;
+    color: #103154;
+    font-size: 24px; /* Texto um pouquinho mais imponente */
+    font-weight: bold;
+    z-index: 5;
+}
+
+/* Grid de Layout dos Cards */
+.dashboard-grid-top {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 45px;
+}
+
+.dashboard-grid-bottom {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+/* Cards Numéricos (Superiores) */
+.card-sio-num {
+    border-radius: 12px;
+    padding: 24px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    min-height: 165px; /* Altura ideal dos contadores */
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.card-azul { background-color: #0056b3; }
+.card-laranja { background-color: #ff9800; }
+
+.card-num-icon {
+    font-size: 70px;
+}
+
+.card-num-info {
+    text-align: right;
+}
+
+.card-num-info p {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 1.3;
+}
+
+.card-num-info h1 {
+    font-size: 54px;
+    font-weight: 800;
+}
+
+/* BOTOES INFERIORES MAIORES (Quadrados Grandes como no Canva) */
+.card-sio-botao {
+    background-color: #0056b3;
+    color: white;
+    border-radius: 12px;
+    height: 220px; /* Aumentado de 180px para 220px para ficarem robustos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px; /* Fonte aumentada para melhor leitura */
+    text-transform: uppercase;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    transition: background 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito interno de marca d'água dos botões */
+.card-sio-botao::before {
+    content: "📋";
+    position: absolute;
+    font-size: 130px; /* Ícones internos expandidos */
+    opacity: 0.08;
+    bottom: -25px;
+    right: -15px;
+}
+.card-sio-botao.btn-criar::before { content: "➕"; }
+.card-sio-botao.btn-lista::before { content: "👥"; }
+.card-sio-botao.btn-minhas::before { content: "🔍"; }
+
+.card-sio-botao:hover {
+    background-color: #004494;
+    transform: translateY(-4px);
+}
+
+.card-sio-botao span {
+    z-index: 2;
+    letter-spacing: 0.8px;
+    line-height: 1.4;
+}

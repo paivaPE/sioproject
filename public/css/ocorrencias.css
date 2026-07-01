@@ -1,0 +1,291 @@
+body{
+    margin:0;
+    padding:0;
+    background:#eef6fb;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.topo{
+    width:90%;
+    margin:20px auto;
+    background:white;
+    border-radius:15px;
+    border:2px solid #0d5ea8;
+    padding:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.logo img{
+    width:120px;
+}
+
+.logo h1{
+    color:#0d5ea8;
+}
+
+.container{
+
+    width:90%;
+    margin:auto;
+
+}
+
+.titulo{
+
+    color:#0d5ea8;
+    font-size:35px;
+    font-weight:bold;
+    margin:40px 0;
+
+}
+
+.card{
+
+    background:#dfeef9;
+
+    border:2px solid #0d5ea8;
+
+    border-radius:15px;
+
+    padding:40px;
+
+}
+
+.linha{
+
+    display:flex;
+
+    gap:40px;
+
+    margin-bottom:30px;
+
+}
+
+.campo{
+
+    flex:1;
+
+}
+
+label{
+
+    display:block;
+
+    font-size:24px;
+
+    margin-bottom:10px;
+
+    color:#0d5ea8;
+
+    font-weight:bold;
+
+}
+
+input,
+
+select,
+
+textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    border:2px solid #0d5ea8;
+
+    font-size:18px;
+
+}
+
+textarea{
+
+    height:170px;
+
+    resize:none;
+
+}
+
+.niveis{
+
+    display:flex;
+
+    gap:30px;
+
+    margin-top:20px;
+
+}
+
+.botao{
+
+    border:none;
+
+    color:white;
+
+    padding:15px 40px;
+
+    border-radius:12px;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+
+.verde{
+
+    background:#15a04a;
+
+}
+
+.azul{
+
+    background:#0d5ea8;
+
+}
+
+.amarelo{
+
+    background:#f7b940;
+
+}
+
+.vermelho{
+
+    background:#d93434;
+
+}
+
+.botoes{
+
+    margin-top:40px;
+
+    display:flex;
+
+    gap:30px;
+
+}
+.filtros{
+
+    display:flex;
+    
+    gap:15px;
+    
+    margin-bottom:25px;
+    
+    align-items:center;
+    
+    }
+    
+    .filtros input{
+    
+    flex:2;
+    
+    }
+    
+    .filtros select{
+    
+    flex:1;
+    
+    }
+    
+    .btn-ver{
+    
+    background:#2980b9;
+    
+    color:white;
+    
+    border:none;
+    
+    padding:8px 14px;
+    
+    border-radius:5px;
+    
+    cursor:pointer;
+    
+    margin-right:5px;
+    
+    }
+    
+    .btn-editar{
+    
+    background:#27ae60;
+    
+    color:white;
+    
+    border:none;
+    
+    padding:8px 14px;
+    
+    border-radius:5px;
+    
+    cursor:pointer;
+    
+    margin-right:5px;
+    
+    }
+    
+    .btn-excluir{
+    
+    background:#c0392b;
+    
+    color:white;
+    
+    border:none;
+    
+    padding:8px 14px;
+    
+    border-radius:5px;
+    
+    cursor:pointer;
+    
+    }
+    
+    .btn-ver:hover{
+    
+    background:#1f6694;
+    
+    }
+    
+    .btn-editar:hover{
+    
+    background:#1d8b4d;
+    
+    }
+    
+    .btn-excluir:hover{
+    
+    background:#992d22;
+    
+    }
+    .btn-cancelar{
+        background:#7f8c8d;
+        color:white;
+        text-decoration:none;
+        padding:12px 25px;
+        border-radius:6px;
+        font-weight:bold;
+        display:inline-block;
+        margin-left:10px;
+        transition:.2s;
+    }
+    
+    .btn-cancelar:hover{
+        background:#5f6a6a;
+    }
+    
+    .botoes{
+        display:flex;
+        gap:15px;
+        margin-top:25px;
+    }

@@ -1,0 +1,74 @@
+<div class="sio-dashboard-topbar">
+    <a href="/dashboard" class="btn-voltar-dashboard">⬅</a>
+    
+    <div class="logo-dashboard-container">
+        <img src="/css/sio2.png" alt="Logo SIO" class="logo-dash-img">
+    </div>
+
+    <div class="texto-boas-vindas-dash">
+        SIO - Gerenciamento de Usuários
+    </div>
+</div>
+
+<div class="main-content" style="padding: 20px 10%;">
+    <div class="box-titulo">Cadastrar Novo Usuário</div>
+    <div class="box-corpo">
+        <form action="/usuarios/novo" method="POST">
+            <div class="form-linha" style="padding:0; margin-bottom: 15px;">
+                <div class="form-coluna">
+                    <label>Nome Completo</label>
+                    <input type="text" name="nome" class="input-sio-cinza" placeholder="Ex: Nicholas Paiva" required>
+                </div>
+                <div class="form-coluna">
+                    <label>Tipo de Perfil</label>
+                    <select name="tipo" class="input-sio-cinza" required>
+                        <option value="professor">Professor</option>
+                        <option value="responsavel">Responsável (Pai/Mãe)</option>
+                        <option value="admin">Administração</option>
+                    </select>
+                </div>
+                <div class="form-coluna">
+                    <label>Matrícula / Código de acesso</label>
+                    <input type="text" name="matricula" class="input-sio-cinza" placeholder="Ex: 2026XYZ">
+                </div>
+            </div>
+            <button type="submit" class="btn-sio-enviar">Salvar Usuário</button>
+        </form>
+    </div>
+
+    <!-- Tabela de Listagem -->
+    <div class="box-titulo">Usuários Cadastrados no Sistema</div>
+    <div class="box-corpo">
+        <table class="sio-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Tipo/Perfil</th>
+                    <th>Matrícula</th>
+                    <th style="text-align: center;">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each usuarios}}
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td><strong>{{this.nome}}</strong></td>
+                    <td>{{this.tipo}}</td>
+                    <td>{{this.matricula}}</td>
+                    <td style="text-align: center;">
+                    <a href="/usuarios/editar/{{this.id}}" class="btn-editar" style="margin-right: 10px; color: #0056b3; text-decoration: none; font-weight: bold;">Editar</a>
+                    <form action="/usuarios/deletar/{{this.id}}" method="POST" style="display: inline;">
+                     <button type="submit" style="background: none; border: none; color: red; cursor: pointer; font-weight: bold;">Excluir</button>
+                    </form>
+                </td>
+                </tr>
+                {{else}}
+                <tr>
+                    <td colspan="5" style="text-align: center; padding: 20px; color: #7f8c8d;">Nenhum usuário cadastrado.</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

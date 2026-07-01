@@ -1,0 +1,164 @@
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/ocorrencias.css">
+
+<div class="sio-dashboard-topbar">
+
+    <a href="/dashboard" class="btn-voltar-dashboard">⬅</a>
+
+    <div class="logo-dashboard-container">
+        <img src="/css/sio2.png" alt="Logo SIO" class="logo-dash-img">
+    </div>
+
+    <div class="texto-boas-vindas-dash">
+        Bem vindo ao SIO - Sistema Integrado de Ocorrências
+    </div>
+
+</div>
+
+<div class="main-content">
+
+<div class="titulo">
+➕ CRIAR OCORRÊNCIA
+</div>
+
+<div class="card">
+
+<form action="/ocorrencias/salvar" method="POST">
+
+<div class="linha">
+
+<div class="campo">
+
+<label>Nome do Aluno</label>
+
+<input
+type="text"
+name="aluno"
+required>
+
+</div>
+
+<div class="campo">
+
+<label>Turma</label>
+
+<select name="turma">
+
+<option>1º Ano A</option>
+
+<option>1º Ano B</option>
+
+<option>2º Ano A</option>
+
+<option>2º Ano B</option>
+
+<option>3º Ano A</option>
+
+<option>3º Ano B</option>
+
+</select>
+
+</div>
+
+<div class="campo">
+
+<label>Data</label>
+
+<input
+type="date"
+name="data_ocorrencia">
+
+</div>
+
+</div>
+
+<div class="linha">
+
+<div class="campo">
+
+<label>Nível</label>
+
+<div class="niveis">
+
+<label>
+
+<input
+type="radio"
+name="nivel"
+value="Leve">
+
+🟢 Leve
+
+</label>
+
+<label>
+
+<input
+type="radio"
+name="nivel"
+value="Médio">
+
+🟠 Médio
+
+</label>
+
+<label>
+
+<input
+type="radio"
+name="nivel"
+value="Grave">
+
+🔴 Grave
+
+</label>
+
+</div>
+
+</div>
+
+<div class="campo">
+
+<label>Tipo</label>
+
+<select name="tipo_infracao">
+
+<option>Bullying</option>
+
+<option>Acidente</option>
+
+<option>Mal-Estar</option>
+
+<option>Outros</option>
+
+</select>
+
+</div>
+
+</div>
+
+<label>Descrição</label>
+
+<textarea
+name="descricao"></textarea>
+
+<div class="botoes">
+
+<button type="submit" class="btn-sio-enviar">
+    Enviar
+</button>
+
+<button
+type="button"
+class="btn-sio-enviar"
+style="background:#f39c12;">
+Salvar Rascunho
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>

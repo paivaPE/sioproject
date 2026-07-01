@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/ocorrencias.css">
+
+<div class="sio-dashboard-topbar">
+
+    <a href="/ocorrencias" class="btn-voltar-dashboard">⬅</a>
+
+    <div class="logo-dashboard-container">
+        <img src="/css/sio2.png" alt="Logo SIO" class="logo-dash-img">
+    </div>
+
+    <div class="texto-boas-vindas-dash">
+        Bem vindo ao Sistema Integrado de Ocorrências
+    </div>
+
+</div>
+
+<div class="main-content">
+
+    <div class="titulo">
+        ✏️ EDITAR OCORRÊNCIA
+    </div>
+
+    <div class="card">
+
+        <form action="/ocorrencias/atualizar/{{ocorrencia.id}}" method="POST">
+
+            <div class="linha">
+
+                <div class="campo">
+                    <label>Nome do Aluno</label>
+                    <input
+                        type="text"
+                        name="aluno"
+                        class="input-sio-cinza"
+                        value="{{ocorrencia.aluno}}"
+                        required>
+                </div>
+
+                <div class="campo">
+                    <label>Turma</label>
+                    <input
+                        type="text"
+                        name="turma"
+                        class="input-sio-cinza"
+                        value="{{ocorrencia.turma}}"
+                        required>
+                </div>
+
+                <div class="campo">
+                    <label>Data</label>
+                    <input
+                        type="date"
+                        name="data_ocorrencia"
+                        class="input-sio-cinza"
+                        value="{{ocorrencia.data_ocorrencia}}"
+                        required>
+                </div>
+
+            </div>
+
+            <div class="linha">
+
+                <div class="campo">
+                    <label>Nível</label>
+                    <input
+                        type="text"
+                        name="nivel"
+                        class="input-sio-cinza"
+                        value="{{ocorrencia.nivel}}"
+                        required>
+                </div>
+
+                <div class="campo">
+                    <label>Tipo da Ocorrência</label>
+                    <input
+                        type="text"
+                        name="tipo_infracao"
+                        class="input-sio-cinza"
+                        value="{{ocorrencia.tipo_infracao}}"
+                        required>
+                </div>
+
+            </div>
+
+            <div class="linha">
+
+                <div class="campo" style="width:100%;">
+                    <label>Descrição</label>
+
+                    <textarea
+                        name="descricao"
+                        class="input-sio-cinza"
+                        rows="6"
+                        required>{{ocorrencia.descricao}}</textarea>
+
+                </div>
+
+            </div>
+
+            <div class="botoes">
+
+                <button type="submit" class="btn-sio-enviar">
+                    💾 Salvar Alterações
+                </button>
+
+                <a href="/ocorrencias" class="btn-cancelar">
+                    Cancelar
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
