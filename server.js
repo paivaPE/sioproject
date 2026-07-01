@@ -6,10 +6,11 @@ const sequelize = require('./config/database');
 const Usuario = require('./models/Usuario');
 const MedidaDisciplinar = require('./models/MedidaDisciplinar');
 const Ocorrencia = require('./models/Ocorrencia');
+const ocorrenciaRoutes = require("./routes/ocorrenciaRoutes");
 
 const app = express();
 
-
+// 2. CONFIGURAÇÃO DO ENGINE DE TEMPLATES (HANDLEBARS)
 app.engine('handlebars', engine({
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,
@@ -19,13 +20,15 @@ app.engine('handlebars', engine({
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
-// 3. MIDDLEWARES OBRIGATÓRIO
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());                         
-app.use(express.static('public'));             
+// 3. MIDDLEWARES OBRIGATÓRIOS
+app.use(express.urlencoded({ extended: true })); // Permite ler dados enviados por formulários (POST)
+app.use(express.json());                         // Permite ler requisições em formato JSON
+app.use(express.static('public'));               // Serve os arquivos CSS e Imagens da pasta public
+app.use('/ocorrencias', ocorrenciaRoutes);
 
-
-// 4. MAPEAMENTO DE ROTAS
+// -------------------------------------------------------------
+// 4. MAPEAMENTO DE ROTAS (CONFORME O PROTÓTIPO DO CANVA)
+// -------------------------------------------------------------
 
 /**
  * ROTA: Escolha Inicial de Perfil
@@ -68,7 +71,6 @@ app.get('/usuarios', async (req, res) => {
     }
 });
 
-
 app.post('/usuarios/novo', async (req, res) => {
     try {
         const { nome, tipo, matricula } = req.body;
@@ -79,7 +81,6 @@ app.post('/usuarios/novo', async (req, res) => {
         res.status(500).send("Erro ao cadastrar novo usuário.");
     }
 });
-
 
 app.post('/usuarios/deletar/:id', async (req, res) => {
     try {
@@ -160,23 +161,11 @@ app.get('/painel-pais/busca', async (req, res) => {
  * ESBOÇO: Rota de Criar Ocorrência (Guilherme assume na branch feature/H_OCOR)
  * Acionado ao clicar no card "CRIAR OCORRÊNCIA"
  */
-app.get('/ocorrencias/nova', async (req, res) => {
-    try {
-        const estudantes = await Usuario.findAll({ where: { tipo: 'estudante' } });
-        res.render('criarocorrencia', { listaDeEstudantes: estudantes });
-    } catch (err) {
-        res.status(500).send("Erro ao abrir formulário de ocorrências.");
-    }
-});
-
-// Resposta temporária para evitar o erro 404 no card de Ocorrências Registradas
-app.get('/ocorrencias', (req, res) => {
-    res.send('<h2>Módulo de Ocorrências Registradas (Será implementado pelo Guilherme)</h2><a href="/dashboard">Voltar</a>');
-});
+ app.use("/ocorrencias", ocorrenciaRoutes);
 
 /**
  * ESBOÇO: Módulo de Medidas Disciplinares (Alison assume na branch feature/H_MEDIDA)
- * Acionado ao clicar no card "MEDIDAS"
+ * Acionado ao clicar no card "ARMAZENAR DOCUMENTOS / MEDIDAS"
  */
 app.get('/medidas', async (req, res) => {
     try {

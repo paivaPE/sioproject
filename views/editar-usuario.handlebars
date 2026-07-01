@@ -12,10 +12,10 @@
 
 <div style="max-width: 1000px; margin: 40px auto; padding: 0 20px; font-family: sans-serif;">
 
-    <!-- Bloco principal imitando o "Cadastrar Novo Usuário" do seu print -->
+    
     <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 30px;">
         
-        <!-- Barra de Título Azul Igual à do Print -->
+       
         <div style="background-color: #1e5384; color: white; padding: 15px 20px; font-size: 18px; font-weight: bold;">
             Editar Usuário: {{usuario.nome}}
         </div>
@@ -43,21 +43,21 @@
                 </div>
             </div>
 
-            <!-- Campo Matrícula -->
+           
             <div style="margin-bottom: 25px;">
                 <label style="display: block; color: #1e3a5f; font-weight: bold; margin-bottom: 8px; font-size: 14px;">Matrícula / Código de acesso</label>
                 <input type="text" name="matricula" value="{{usuario.matricula}}" required
                        style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; background-color: #f9f9f9; box-sizing: border-box;">
             </div>
 
-            <!-- Botões de Ação na base do formulário -->
+            
             <div style="display: flex; gap: 15px; align-items: center;">
-                <!-- Botão Verde de Salvar -->
+               
                 <button type="submit" style="background-color: #24b363; color: white; border: none; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s;">
                     Salvar Alterações
                 </button>
                 
-                <!-- Botão de Cancelar / Voltar -->
+               
                 <a href="/usuarios" style="color: #666; text-decoration: none; font-size: 14px; font-weight: bold; padding: 12px 15px; border-radius: 6px; border: 1px solid #ccc; background-color: #fff;">
                     Cancelar
                 </a>

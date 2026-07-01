@@ -1,0 +1,162 @@
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/ocorrencias.css">
+
+<div class="sio-dashboard-topbar">
+
+    <a href="/dashboard" class="btn-voltar-dashboard">⬅</a>
+
+    <div class="logo-dashboard-container">
+        <img src="/css/sio2.png" class="logo-dash-img">
+    </div>
+
+    <div class="texto-boas-vindas-dash">
+        Bem vindo ao SIO - Sistema Integrado de Ocorrências
+    </div>
+
+</div>
+
+<div class="main-content">
+
+<div class="box-titulo">
+📋 CONTROLE DE OCORRÊNCIAS
+</div>
+
+<div class="box-corpo">
+
+<div class="filtros">
+
+<input
+type="text"
+placeholder="Pesquisar aluno..."
+class="input-sio-cinza">
+
+<select class="input-sio-cinza">
+
+<option>Todas as Turmas</option>
+
+<option>1º Ano A</option>
+<option>1º Ano B</option>
+<option>2º Ano A</option>
+<option>2º Ano B</option>
+<option>3º Ano A</option>
+<option>3º Ano B</option>
+
+</select>
+
+<select class="input-sio-cinza">
+
+<option>Todos os Tipos</option>
+
+<option>Bullying</option>
+<option>Acidente</option>
+<option>Mal-Estar</option>
+<option>Outros</option>
+
+</select>
+
+<a href="/ocorrencias/nova">
+
+<button class="btn-sio-enviar">
+
+Nova Ocorrência
+
+</button>
+
+</a>
+
+</div>
+
+<table class="sio-table">
+
+<thead>
+
+<tr>
+
+<th>Aluno</th>
+
+<th>Turma</th>
+
+<th>Data</th>
+
+<th>Tipo</th>
+
+<th>Nível</th>
+
+<th>Ações</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{{#each ocorrencias}}
+
+<tr>
+
+<td>{{aluno}}</td>
+
+<td>{{turma}}</td>
+
+<td>{{data_ocorrencia}}</td>
+
+<td>{{tipo_infracao}}</td>
+
+<td>
+
+<span class="circulo-cor {{nivel}}"></span>
+
+{{nivel}}
+
+</td>
+
+<td>
+
+<a href="/ocorrencias/ver/{{id}}">
+
+<button class="btn-ver">
+
+VER
+
+</button>
+
+</a>
+
+<a href="/ocorrencias/editar/{{id}}">
+
+<button class="btn-editar">
+
+Editar
+
+</button>
+
+</a>
+
+<form
+action="/ocorrencias/excluir/{{id}}"
+method="POST"
+style="display:inline;">
+
+<button
+class="btn-excluir"
+onclick="return confirm('Deseja excluir esta ocorrência?')">
+
+Excluir
+
+</button>
+
+</form>
+
+</td>
+
+</tr>
+
+{{/each}}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
