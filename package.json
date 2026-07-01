@@ -2,18 +2,6 @@
   "name": "sioprojeto",
   "version": "1.0.0",
   "description": "",
-<<<<<<< HEAD
-  "main": "server.js",
-  "type": "commonjs",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "4.18.2",
-    "express-handlebars": "6.0.7",
-    "sequelize": "6.37.8",
-    "sqlite3": "5.1.7"
-=======
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,6 +16,5 @@
     "handlebars": "^4.7.9",
     "sequelize": "^6.37.8",
     "sqlite3": "^6.0.1"
->>>>>>> 8dd7182d16ea5a54a4aedc04a16cac59eb7dda72
   }
 }
