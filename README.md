@@ -1,6 +1,6 @@
-Code&Craft - Alison Gabriel, Guilherme Torres, Nicholas Paiva (SCRUM MASTER)
-apresenta:
-SIO - SISTEMA INTEGRADO DE OCORRÊNCIAS
+Code&Craft - Alison Gabriel, Guilherme Torres, Nicholas Paiva (SCRUM MASTER)<br>
+apresenta:<br>
+SIO - SISTEMA INTEGRADO DE OCORRÊNCIAS<br>
 
 Atualmente, o registo de incidentes e ocorrências nas escolas (atrasos, conflitos
 disciplinares, entrega de atestados e problemas pedagógicos) é feito de forma
