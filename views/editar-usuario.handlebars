@@ -1,29 +1,68 @@
-<h2>Editar Usuário</h2>
-
-
-<h2>Editar Usuário</h2>
-
-
-<form action="/usuarios/editar/{{usuario.id}}" method="POST">
-    <div>
-        <label>Nome Completo</label>
-        <input type="text" name="nome" value="{{usuario.nome}}" required>
+<div class="sio-dashboard-topbar">
+    <a href="/usuarios" class="btn-voltar-dashboard">⬅</a>
+    
+    <div class="logo-dashboard-container">
+        <img src="/css/sio2.png" alt="Logo SIO" class="logo-dash-img">
     </div>
 
-    <div>
-        <label>Tipo de Perfil</label>
-        <select name="tipo">
-            <!-- Validação simples para manter selecionado o tipo atual -->
-            <option value="estudante" {{#if (eq usuario.tipo 'estudante')}}selected{{/if}}>Estudante</option>
-            <option value="professor" {{#if (eq usuario.tipo 'professor')}}selected{{/if}}>Professor</option>
-        </select>
+    <div class="texto-boas-vindas-dash">
+        SIO - Gerenciamento de Usuários
     </div>
+</div>
 
-    <div>
-        <label>Matrícula / Código de acesso</label>
-        <input type="text" name="matricula" value="{{usuario.matricula}}" required>
+<div style="max-width: 1000px; margin: 40px auto; padding: 0 20px; font-family: sans-serif;">
+
+    
+    <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 30px;">
+        
+       
+        <div style="background-color: #1e5384; color: white; padding: 15px 20px; font-size: 18px; font-weight: bold;">
+            Editar Usuário: {{usuario.nome}}
+        </div>
+
+        <form action="/usuarios/editar/{{usuario.id}}" method="POST" style="padding: 25px;">
+            
+            <div style="display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap;">
+
+                <div style="flex: 1; min-width: 280px;">
+                    <label style="display: block; color: #1e3a5f; font-weight: bold; margin-bottom: 8px; font-size: 14px;">Nome Completo</label>
+                    <input type="text" name="nome" value="{{usuario.nome}}" required 
+                           style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; background-color: #f9f9f9; box-sizing: border-box;">
+                </div>
+                <div style="flex: 1; min-width: 280px;">
+                    <label style="display: block; color: #1e3a5f; font-weight: bold; margin-bottom: 8px; font-size: 14px;">Tipo de Perfil</label>
+                    <select name="tipo" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; background-color: #f9f9f9; box-sizing: border-box; height: 45px;">
+                        <option value="estudante" {{#if (eq_placeholder_nao_usar)}}selected{{/if}}>Estudante</option>
+                        <option value="professor" {{#if (eq_placeholder_nao_usar_2)}}selected{{/if}}>Professor</option>
+                        <option value="responsavel" {{#if (eq_placeholder_nao_usar_3)}}selected{{/if}}>Responsável</option>
+                        <option value="admin" {{#if (eq_placeholder_nao_usar_4)}}selected{{/if}}>Admin</option>
+                    </select>
+                    <small style="color: #666; display: block; margin-top: 5px; font-size: 12px;">
+                        Perfil atual salvo no banco: <strong>{{usuario.tipo}}</strong>
+                    </small>
+                </div>
+            </div>
+
+           
+            <div style="margin-bottom: 25px;">
+                <label style="display: block; color: #1e3a5f; font-weight: bold; margin-bottom: 8px; font-size: 14px;">Matrícula / Código de acesso</label>
+                <input type="text" name="matricula" value="{{usuario.matricula}}" required
+                       style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; background-color: #f9f9f9; box-sizing: border-box;">
+            </div>
+
+            
+            <div style="display: flex; gap: 15px; align-items: center;">
+               
+                <button type="submit" style="background-color: #24b363; color: white; border: none; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s;">
+                    Salvar Alterações
+                </button>
+                
+               
+                <a href="/usuarios" style="color: #666; text-decoration: none; font-size: 14px; font-weight: bold; padding: 12px 15px; border-radius: 6px; border: 1px solid #ccc; background-color: #fff;">
+                    Cancelar
+                </a>
+            </div>
+
+        </form>
     </div>
-
-    <button type="submit" style="background-color: #28a745; color: white;">Salvar Alterações</button>
-    <a href="/usuarios">Cancelar</a>
-</form>
+</div>

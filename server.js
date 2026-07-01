@@ -2,8 +2,7 @@ const express = require('express');
 const { engine } = require('express-handlebars');
 const sequelize = require('./config/database');
 
-// 1. IMPORTAÇÃO DOS MODELOS DO BANCO DE DADOS
-// (Deixa o banco estruturado antes dos meninos iniciarem as tarefas deles)
+
 const Usuario = require('./models/Usuario');
 const MedidaDisciplinar = require('./models/MedidaDisciplinar');
 const Ocorrencia = require('./models/Ocorrencia');
@@ -40,8 +39,7 @@ app.get('/', (req, res) => {
 });
 
 /**
- * ROTA: A Tela Principal do SIO (A Dashboard)
- * Renderiza os cards e calcula os indicadores dinamicamente (image_f40aa3.png)
+ * Dashboard SIO
  */
 app.get('/dashboard', async (req, res) => {
     try {
@@ -60,10 +58,9 @@ app.get('/dashboard', async (req, res) => {
 });
 
 /**
- * ROTAS DO SEU MÓDULO: Gerenciamento de Usuários (Nicholas)
- * Acionado ao clicar no card "LISTA DE ALUNOS"
+ * Gerenciamento de Usuários
  */
-// 1. GET: Renderiza a página e lista todos os usuários já cadastrados
+
 app.get('/usuarios', async (req, res) => {
     try {
         const usuarios = await Usuario.findAll();
@@ -74,19 +71,17 @@ app.get('/usuarios', async (req, res) => {
     }
 });
 
-// 2. POST: Recebe os dados do formulário e cria o usuário no banco
 app.post('/usuarios/novo', async (req, res) => {
     try {
         const { nome, tipo, matricula } = req.body;
         await Usuario.create({ nome, tipo, matricula });
-        res.redirect('/usuarios'); // Redireciona de volta para atualizar a lista
+        res.redirect('/usuarios'); 
     } catch (err) {
         console.error("Erro ao criar usuário:", err);
         res.status(500).send("Erro ao cadastrar novo usuário.");
     }
 });
 
-// 3. POST: Deleta o usuário através do ID passado na URL
 app.post('/usuarios/deletar/:id', async (req, res) => {
     try {
         await Usuario.destroy({ where: { id: req.params.id } });
@@ -97,10 +92,33 @@ app.post('/usuarios/deletar/:id', async (req, res) => {
     }
 });
 
-/**
- * ROTAS DO SEU MÓDULO: Painel de Consulta dos Pais (Nicholas - História H5)
- * Acionado ao clicar no card "MINHAS OCORRÊNCIAS"
- */
+app.get('/usuarios/editar/:id', async (req, res) => {
+    try {
+        const usuario = await Usuario.findByPk(req.params.id);
+        res.render('editar-usuario', { usuario }); 
+    } catch (err) {
+        console.error("Erro ao buscar usuário para edição:", err);
+        res.status(500).send("Erro ao carregar dados do usuário.");
+    }
+});
+
+app.post('/usuarios/editar/:id', async (req, res) => {
+    try {
+        const { nome, tipo, matricula } = req.body;
+        
+       
+        await Usuario.update(
+            { nome, tipo, matricula },
+            { where: { id: req.params.id } }
+        );
+        
+        res.redirect('/usuarios'); 
+    } catch (err) {
+        console.error("Erro ao atualizar usuário:", err);
+        res.status(500).send("Erro ao salvar alterações do usuário.");
+    }
+});
+
 // 1. Rota para abrir a tela inicial do painel (Apenas mostra o select com os alunos)
 app.get('/painel-pais', async (req, res) => {
     try {
@@ -116,15 +134,15 @@ app.get('/painel-pais/busca', async (req, res) => {
     try {
         const { aluno_id } = req.query;
         
-        // Recarrega a lista para manter o select preenchido na tela
+        
         const estudantes = await Usuario.findAll({ where: { tipo: 'estudante' } });
 
-        // Busca no banco as ocorrências que pertencem ao ID do aluno selecionado
+        
         const ocorrencias = await Ocorrencia.findAll({
             where: { aluno_id: aluno_id }
         });
 
-        // Renderiza a página liberando a tabela com os resultados
+      
         res.render('painel_pais', { 
             estudantes, 
             ocorrencias, 
@@ -137,9 +155,7 @@ app.get('/painel-pais/busca', async (req, res) => {
 });
 
 
-// -------------------------------------------------------------
-// 5. GATILHOS DA MAIN (Para os meninos não pegarem links quebrados)
-// -------------------------------------------------------------
+// 5. GATILHOS DA MAIN (Para voces nao pegarem links quebrados)
 
 /**
  * ESBOÇO: Rota de Criar Ocorrência (Guilherme assume na branch feature/H_OCOR)
@@ -162,19 +178,17 @@ app.get('/medidas', async (req, res) => {
 
 
 
-// 6. SINCRONIZAÇÃO DO BANCO E INICIALIZAÇÃO DO SERVIDOR
+
 const PORT = 3000;
 
-// O parâmetro { force: false } garante que o Sequelize não apague seus dados ao reiniciar o servidor
+
 sequelize.sync({ force: false })
     .then(() => {
-        console.log("=================================================");
-        console.log("🛡️  Banco de dados do SIO sincronizado com sucesso!");
+        console.log("Banco de dados do SIO sincronizado com sucesso!");
         app.listen(PORT, () => {
-            console.log(`🚀 SIO rodando perfeitamente em http://localhost:${PORT}`);
-            console.log("=================================================");
+            console.log(`SIO rodando em http://localhost:${PORT}`);
         });
     })
     .catch((err) => {
-        console.error("❌ Falha crítica ao conectar/sincronizar banco de dados:", err);
+        console.error("falha no db", err);
     });

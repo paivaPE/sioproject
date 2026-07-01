@@ -23,7 +23,6 @@ const Ocorrencia = sequelize.define('Ocorrencia', {
         type: DataTypes.STRING,
         allowNull: false
     },
-
     tipo_infracao: {
         type: DataTypes.STRING,
         allowNull: false
@@ -38,7 +37,6 @@ const Ocorrencia = sequelize.define('Ocorrencia', {
         type: DataTypes.TEXT,
         allowNull: false
     }
-
 }, {
     tableName: 'ocorrencias',
     timestamps: false
