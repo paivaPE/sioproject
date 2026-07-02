@@ -10,7 +10,7 @@ const ocorrenciaRoutes = require("./routes/ocorrenciaRoutes");
 
 const app = express();
 
-// 2. CONFIGURAÇÃO DO ENGINE DE TEMPLATES (HANDLEBARS)
+
 app.engine('handlebars', engine({
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,
@@ -20,20 +20,14 @@ app.engine('handlebars', engine({
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
-// 3. MIDDLEWARES OBRIGATÓRIOS
-app.use(express.urlencoded({ extended: true })); // Permite ler dados enviados por formulários (POST)
-app.use(express.json());                         // Permite ler requisições em formato JSON
-app.use(express.static('public'));               // Serve os arquivos CSS e Imagens da pasta public
+
+app.use(express.urlencoded({ extended: true })); 
+app.use(express.json());                         
+app.use(express.static('public'));               
 app.use('/ocorrencias', ocorrenciaRoutes);
 
-// -------------------------------------------------------------
-// 4. MAPEAMENTO DE ROTAS (CONFORME O PROTÓTIPO DO CANVA)
-// -------------------------------------------------------------
 
-/**
- * ROTA: Escolha Inicial de Perfil
- * Abre a tela com as 3 opções de entrada (image_e92979.jpg)
- */
+ 
 app.get('/', (req, res) => { 
     res.render('entrada'); 
 });
@@ -43,13 +37,13 @@ app.get('/', (req, res) => {
  */
 app.get('/dashboard', async (req, res) => {
     try {
-        // Conta no banco quantos usuários do tipo estudante existem
+        
         const totalAlunos = await Usuario.count({ where: { tipo: 'estudante' } });
         
-        // Conta no banco o número total de ocorrências criadas
+        
         const totalOcorrencias = await Ocorrencia.count();
 
-        // Passa os valores calculados para preencher os cards numéricos da tela
+        
         res.render('dashboard', { totalAlunos, totalOcorrencias });
     } catch (err) {
         console.error(err);
@@ -85,7 +79,7 @@ app.post('/usuarios/novo', async (req, res) => {
 app.post('/usuarios/deletar/:id', async (req, res) => {
     try {
         await Usuario.destroy({ where: { id: req.params.id } });
-        res.redirect('/usuarios'); // Redireciona de volta para atualizar a lista
+        res.redirect('/usuarios'); 
     } catch (err) {
         console.error("Erro ao deletar usuário:", err);
         res.status(500).send("Erro ao remover usuário.");
@@ -119,7 +113,7 @@ app.post('/usuarios/editar/:id', async (req, res) => {
     }
 });
 
-// 1. Rota para abrir a tela inicial do painel (Apenas mostra o select com os alunos)
+
 app.get('/painel-pais', async (req, res) => {
     try {
         const estudantes = await Usuario.findAll({ where: { tipo: 'estudante' } });
@@ -129,7 +123,7 @@ app.get('/painel-pais', async (req, res) => {
     }
 });
 
-// 2. Rota que faz a busca real das ocorrências daquele aluno no banco de dados
+
 app.get('/painel-pais/busca', async (req, res) => {
     try {
         const { aluno_id } = req.query;
@@ -155,18 +149,10 @@ app.get('/painel-pais/busca', async (req, res) => {
 });
 
 
-// 5. GATILHOS DA MAIN (Para voces nao pegarem links quebrados)
 
-/**
- * ESBOÇO: Rota de Criar Ocorrência (Guilherme assume na branch feature/H_OCOR)
- * Acionado ao clicar no card "CRIAR OCORRÊNCIA"
- */
  app.use("/ocorrencias", ocorrenciaRoutes);
 
-/**
- * ESBOÇO: Módulo de Medidas Disciplinares (Alison assume na branch feature/H_MEDIDA)
- * Acionado ao clicar no card "ARMAZENAR DOCUMENTOS / MEDIDAS"
- */
+
 app.get('/medidas', async (req, res) => {
     try {
         const medidas = await MedidaDisciplinar.findAll();
