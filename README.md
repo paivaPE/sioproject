@@ -8,3 +8,6 @@ fragmentada, muitas vezes através de papel ou e-mails que se perdem. Isto gera 
 na resolução de problemas e falta de histórico para a coordenação. O nosso software irá
 centralizar e automatizar estes registos, permitindo que professores, coordenadores e responsáveis
 acompanhem a vida acadêmica do aluno em tempo real.
+
+
+.

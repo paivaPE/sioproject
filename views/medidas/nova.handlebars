@@ -1,0 +1,103 @@
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/medidas.css">
+
+<div class="sio-dashboard-topbar">
+
+    <a href="/dashboard" class="btn-voltar-dashboard">⬅</a>
+
+    <div class="logo-dashboard-container">
+        <img src="/css/sio2.png" alt="Logo SIO" class="logo-dash-img">
+    </div>
+
+    <div class="texto-boas-vindas-dash">
+        Bem vindo ao SIO - Sistema Integrado de Ocorrências
+    </div>
+
+</div>
+
+<div class="main-content">
+
+<div class="titulo">
+📄 CADASTRAR MEDIDA DISCIPLINAR
+</div>
+
+<div class="card">
+
+<form action="/medidas/salvar" method="POST">
+
+<div class="campo">
+
+<label>Nome da Medida</label>
+
+<input
+type="text"
+name="nome"
+required>
+
+</div>
+
+<div class="campo">
+
+<label>Descrição</label>
+
+<textarea
+name="descricao"
+required></textarea>
+
+</div>
+
+<div class="linha">
+
+<div class="campo">
+
+<label>Duração</label>
+
+<input
+type="text"
+name="duracao"
+placeholder="Ex: 3 dias"
+required>
+
+</div>
+
+<div class="campo">
+
+<label>Status</label>
+
+<select name="ativo">
+
+<option value="Ativa">Ativa</option>
+
+<option value="Inativa">Inativa</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="botoes">
+
+<button
+type="submit"
+class="btn-sio-enviar">
+
+Salvar
+
+</button>
+
+<a
+href="/medidas"
+class="btn-cancelar">
+
+Cancelar
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>

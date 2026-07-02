@@ -1,0 +1,150 @@
+<link rel="stylesheet" href="/css/style.css">
+
+<div class="sio-dashboard-topbar">
+
+    <a href="/dashboard" class="btn-voltar-dashboard">⬅</a>
+
+    <div class="logo-dashboard-container">
+        <img src="/css/sio2.png" alt="Logo SIO" class="logo-dash-img">
+    </div>
+
+    <div class="texto-boas-vindas-dash">
+        Bem vindo ao SIO - Sistema Integrado de Ocorrências
+    </div>
+
+</div>
+
+<div class="main-content">
+
+    <div class="box-titulo">
+        📄 Cadastrar Nova Medida Disciplinar
+    </div>
+
+    <div class="box-corpo">
+
+        <form action="/medidas/salvar" method="POST">
+
+            <div class="form-linha">
+
+                <div class="form-coluna">
+                    <label>Nome</label>
+                    <input
+                        type="text"
+                        name="nome"
+                        class="input-sio-cinza"
+                        required>
+                </div>
+
+                <div class="form-coluna">
+                    <label>Duração</label>
+                    <input
+                        type="text"
+                        name="duracao"
+                        class="input-sio-cinza"
+                        required>
+                </div>
+
+            </div>
+
+            <div class="form-linha">
+
+                <div class="form-coluna">
+                    <label>Descrição</label>
+                    <textarea
+                        name="descricao"
+                        class="input-sio-cinza"
+                        rows="4"></textarea>
+                </div>
+
+                <div class="form-coluna">
+
+                    <label>Status</label>
+
+                    <select
+                        name="ativo"
+                        class="input-sio-cinza">
+
+                        <option value="Ativa">Ativa</option>
+                        <option value="Inativa">Inativa</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn-sio-enviar">
+
+                Salvar Medida
+
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="box-titulo">
+        📋 Medidas Disciplinares Cadastradas
+    </div>
+
+    <div class="box-corpo">
+
+        <table class="sio-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Duração</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {{#each medidas}}
+
+                <tr>
+
+                    <td>{{nome}}</td>
+
+                    <td>{{descricao}}</td>
+
+                    <td>{{duracao}}</td>
+
+                    <td>{{ativo}}</td>
+
+                    <td>
+
+                        <a href="/medidas/editar/{{id}}">Editar</a>
+
+                        |
+
+                        <form action="/medidas/excluir/{{id}}" method="POST" style="display:inline;">
+
+                            <button style="border:none;background:none;color:red;cursor:pointer;">
+                                Excluir
+                            </button>
+
+                        </form>
+
+                    </td>
+
+                </tr>
+
+                {{/each}}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
