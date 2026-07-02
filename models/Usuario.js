@@ -21,7 +21,7 @@ const Usuario = sequelize.define('Usuario', {
     }
 }, {
     tableName: 'usuarios',
-    timestamps: false // Evita exigir colunas 'createdAt' e 'updatedAt' no SQLite
+    timestamps: false
 });
 
 module.exports = Usuario;
