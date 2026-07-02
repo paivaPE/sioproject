@@ -1,0 +1,107 @@
+.titulo{
+    background:#1a4a75;
+    color:#fff;
+    padding:15px;
+    border-radius:8px 8px 0 0;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.card{
+    background:#fff;
+    padding:25px;
+    border-radius:0 0 8px 8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+    margin-bottom:20px;
+}
+
+.linha{
+    display:flex;
+    gap:20px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+}
+
+.campo{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+.campo label{
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#103154;
+}
+
+.campo input,
+.campo select,
+.campo textarea{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:15px;
+}
+
+.campo textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.botoes{
+    margin-top:25px;
+    display:flex;
+    gap:15px;
+}
+
+.btn-cancelar{
+    background:#e74c3c;
+    color:#fff;
+    text-decoration:none;
+    padding:12px 25px;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+.btn-cancelar:hover{
+    background:#c0392b;
+}
+
+.sio-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+.sio-table th{
+    background:#103154;
+    color:#fff;
+    padding:12px;
+}
+
+.sio-table td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+}
+
+.sio-table tr:nth-child(even){
+    background:#f7f7f7;
+}
+
+.sio-table a{
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.sio-table button{
+    border:none;
+    background:#e74c3c;
+    color:white;
+    padding:6px 10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.sio-table button:hover{
+    background:#c0392b;
+}

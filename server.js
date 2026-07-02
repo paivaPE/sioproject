@@ -7,6 +7,7 @@ const Usuario = require('./models/Usuario');
 const MedidaDisciplinar = require('./models/MedidaDisciplinar');
 const Ocorrencia = require('./models/Ocorrencia');
 const ocorrenciaRoutes = require("./routes/ocorrenciaRoutes");
+const medidaRoutes = require('./routes/medidaRoutes');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());                         
 app.use(express.static('public'));               
 app.use('/ocorrencias', ocorrenciaRoutes);
+app.use('/medidas', medidaRoutes);
 
 
  
