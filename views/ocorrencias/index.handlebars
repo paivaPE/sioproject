@@ -17,146 +17,157 @@
 
 <div class="main-content">
 
-<div class="box-titulo">
-📋 CONTROLE DE OCORRÊNCIAS
-</div>
+    <div class="box-titulo">
+        📋 CONTROLE DE OCORRÊNCIAS
+    </div>
 
-<div class="box-corpo">
+    <div class="box-corpo">
 
-<div class="filtros">
+        <div class="filtros">
 
-<input
-type="text"
-placeholder="Pesquisar aluno..."
-class="input-sio-cinza">
+            <form action="/ocorrencias" method="GET" class="filtros">
 
-<select class="input-sio-cinza">
+                <input
+                    type="text"
+                    name="busca"
+                    value="{{busca}}"
+                    placeholder="Pesquisar aluno ou matrícula..."
+                    class="input-sio-cinza"
+                >
 
-<option>Todas as Turmas</option>
+                <select name="turma" class="input-sio-cinza">
 
-<option>1º Ano A</option>
-<option>1º Ano B</option>
-<option>2º Ano A</option>
-<option>2º Ano B</option>
-<option>3º Ano A</option>
-<option>3º Ano B</option>
+                    <option value="">Todas as Turmas</option>
 
-</select>
+                    <option value="1º Ano A">1º Ano A</option>
+                    <option value="1º Ano B">1º Ano B</option>
+                    <option value="2º Ano A">2º Ano A</option>
+                    <option value="2º Ano B">2º Ano B</option>
+                    <option value="3º Ano A">3º Ano A</option>
+                    <option value="3º Ano B">3º Ano B</option>
 
-<select class="input-sio-cinza">
+                </select>
 
-<option>Todos os Tipos</option>
+                <select name="tipo" class="input-sio-cinza">
 
-<option>Bullying</option>
-<option>Acidente</option>
-<option>Mal-Estar</option>
-<option>Outros</option>
+                    <option value="">Todos os Tipos</option>
 
-</select>
+                    <option value="Bullying">Bullying</option>
+                    <option value="Acidente">Acidente</option>
+                    <option value="Mal-Estar">Mal-Estar</option>
+                    <option value="Outros">Outros</option>
 
-<a href="/ocorrencias/nova">
+                </select>
 
-<button class="btn-sio-enviar">
+                <button type="submit" class="btn-sio-enviar">
+                    Buscar
+                </button>
 
-Nova Ocorrência
+                <a href="/ocorrencias">
+                    <button type="button" class="btn-sio-enviar">
+                        Limpar
+                    </button>
+                </a>
 
-</button>
+                <a href="/ocorrencias/nova">
+                    <button type="button" class="btn-sio-enviar">
+                        Nova Ocorrência
+                    </button>
+                </a>
 
-</a>
+            </form>
 
-</div>
+        </div>
 
-<table class="sio-table">
+        <table class="sio-table">
 
-<thead>
+            <thead>
 
-<tr>
+                <tr>
 
-<th>Aluno</th>
+                    <th>Aluno</th>
+                    <th>Turma</th>
+                    <th>Data</th>
+                    <th>Tipo</th>
+                    <th>Nível</th>
+                    <th>Ações</th>
 
-<th>Turma</th>
+                </tr>
 
-<th>Data</th>
+            </thead>
 
-<th>Tipo</th>
+            <tbody>
 
-<th>Nível</th>
+                {{#each ocorrencias}}
 
-<th>Ações</th>
+                <tr>
 
-</tr>
+                    <td>{{aluno}}</td>
 
-</thead>
+                    <td>{{turma}}</td>
 
-<tbody>
+                    <td>{{data_ocorrencia}}</td>
 
-{{#each ocorrencias}}
+                    <td>{{tipo_infracao}}</td>
 
-<tr>
+                    <td>
 
-<td>{{aluno}}</td>
+                        <span class="circulo-cor {{nivel}}"></span>
 
-<td>{{turma}}</td>
+                        {{nivel}}
 
-<td>{{data_ocorrencia}}</td>
+                    </td>
 
-<td>{{tipo_infracao}}</td>
+                    <td>
 
-<td>
+                        <a href="/ocorrencias/ver/{{id}}">
+                            <button type="button" class="btn-ver">
+                                VER
+                            </button>
+                        </a>
 
-<span class="circulo-cor {{nivel}}"></span>
+                        <a href="/ocorrencias/editar/{{id}}">
+                            <button type="button" class="btn-editar">
+                                Editar
+                            </button>
+                        </a>
 
-{{nivel}}
+                        <form
+                            action="/ocorrencias/excluir/{{id}}"
+                            method="POST"
+                            style="display:inline;"
+                        >
 
-</td>
+                            <button
+                                type="submit"
+                                class="btn-excluir"
+                                onclick="return confirm('Deseja excluir esta ocorrência?')"
+                            >
+                                Excluir
+                            </button>
 
-<td>
+                        </form>
 
-<a href="/ocorrencias/ver/{{id}}">
+                    </td>
 
-<button class="btn-ver">
+                </tr>
 
-VER
+                {{else}}
 
-</button>
+                <tr>
 
-</a>
+                    <td colspan="6" style="text-align: center;">
+                        Nenhuma ocorrência encontrada.
+                    </td>
 
-<a href="/ocorrencias/editar/{{id}}">
+                </tr>
 
-<button class="btn-editar">
+                {{/each}}
 
-Editar
+            </tbody>
 
-</button>
+        </table>
 
-</a>
-
-<form
-action="/ocorrencias/excluir/{{id}}"
-method="POST"
-style="display:inline;">
-
-<button
-class="btn-excluir"
-onclick="return confirm('Deseja excluir esta ocorrência?')">
-
-Excluir
-
-</button>
-
-</form>
-
-</td>
-
-</tr>
-
-{{/each}}
-
-</tbody>
-
-</table>
-
-</div>
+    </div>
 
 </div>

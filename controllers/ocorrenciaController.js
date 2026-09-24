@@ -5,15 +5,20 @@ const Usuario = require('../models/Usuario');
 module.exports = {
 
     async listar(req, res) {
+
         try {
 
             const busca = req.query.busca;
+            const turma = req.query.turma;
+            const tipo = req.query.tipo;
 
-            // TESTE: mostra o que foi digitado na busca
-            console.log("BUSCA RECEBIDA:", busca);
+            console.log("BUSCA:", busca);
+            console.log("TURMA:", turma);
+            console.log("TIPO:", tipo);
 
-            let ocorrencias;
+            const where = {};
 
+            // Busca por nome ou matrícula
             if (busca) {
 
                 const alunos = await Usuario.findAll({
@@ -34,7 +39,6 @@ module.exports = {
                     }
                 });
 
-                // TESTE: mostra os alunos encontrados
                 console.log(
                     "ALUNOS ENCONTRADOS:",
                     alunos.map(aluno => ({
@@ -46,24 +50,31 @@ module.exports = {
 
                 const nomesAlunos = alunos.map(aluno => aluno.nome);
 
-                // TESTE: mostra os nomes que serão usados na busca de ocorrências
                 console.log("NOMES PARA BUSCAR:", nomesAlunos);
 
-                ocorrencias = await Ocorrencia.findAll({
-                    where: {
-                        aluno: {
-                            [Op.in]: nomesAlunos
-                        }
-                    }
-                });
+                where.aluno = {
+                    [Op.in]: nomesAlunos
+                };
+            }
 
-            } else {
+            // Filtro por turma
+            if (turma) {
 
-                ocorrencias = await Ocorrencia.findAll();
+                where.turma = turma;
 
             }
 
-            // TESTE: mostra quantas ocorrências foram encontradas
+            // Filtro por tipo de ocorrência
+            if (tipo) {
+
+                where.tipo_infracao = tipo;
+
+            }
+
+            const ocorrencias = await Ocorrencia.findAll({
+                where
+            });
+
             console.log(
                 "OCORRÊNCIAS ENCONTRADAS:",
                 ocorrencias.length
@@ -71,7 +82,9 @@ module.exports = {
 
             res.render('ocorrencias/index', {
                 ocorrencias,
-                busca
+                busca,
+                turma,
+                tipo
             });
 
         } catch (erro) {
@@ -82,6 +95,7 @@ module.exports = {
             res.status(500).send('Erro ao buscar ocorrências.');
 
         }
+
     },
 
     nova(req, res) {
@@ -144,9 +158,11 @@ module.exports = {
             descricao: req.body.descricao
 
         }, {
+
             where: {
                 id: req.params.id
             }
+
         });
 
         res.redirect('/ocorrencias');
