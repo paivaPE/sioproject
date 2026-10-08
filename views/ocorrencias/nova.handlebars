@@ -1,164 +1,91 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/ocorrencias.css">
-
 <div class="sio-dashboard-topbar">
-
-    <a href="/dashboard" class="btn-voltar-dashboard">⬅</a>
-
+    <a href="/dashboard" class="btn-voltar-dashboard" aria-label="Voltar para o Dashboard">⬅</a>
+    
     <div class="logo-dashboard-container">
-        <img src="/css/sio2.png" alt="Logo SIO" class="logo-dash-img">
+        <img src="/css/sio2.png" alt="Logo SIO - Sistema Integrado de Ocorrências" class="logo-dash-img">
     </div>
 
     <div class="texto-boas-vindas-dash">
-        Bem vindo ao SIO - Sistema Integrado de Ocorrências
+        Bem-vindo ao SIO - Sistema Integrado de Ocorrências
+    </div>
+</div>
+
+<main class="main-content">
+
+    <h1 class="titulo">➕ CRIAR OCORRÊNCIA</h1>
+
+    <div class="card">
+        <form action="/ocorrencias/salvar" method="POST">
+
+            <div class="linha">
+                <div class="campo">
+                    <label for="aluno">Nome do Aluno</label>
+                    <input type="text" id="aluno" name="aluno" required placeholder="Digite o nome do aluno">
+                </div>
+
+                <div class="campo">
+                    <label for="turma">Turma</label>
+                    <select id="turma" name="turma" required>
+                        <option value="">Selecione a turma...</option>
+                        <option value="1A">1º Ano A</option>
+                        <option value="1B">1º Ano B</option>
+                        <option value="2A">2º Ano A</option>
+                        <option value="2B">2º Ano B</option>
+                        <option value="3A">3º Ano A</option>
+                        <option value="3B">3º Ano B</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="data_ocorrencia">Data da Ocorrência</label>
+                    <input type="date" id="data_ocorrencia" name="data_ocorrencia" required>
+                </div>
+            </div>
+
+            <div class="linha">
+                <fieldset class="campo" style="border: none; padding: 0; margin: 0;">
+                    <legend style="font-weight: bold; margin-bottom: 5px; color: #1e3a5f;">Nível da Ocorrência</legend>
+                    <div class="niveis">
+                        <label>
+                            <input type="radio" name="nivel" value="Leve" required>
+                            🟢 Leve
+                        </label>
+                        <label>
+                            <input type="radio" name="nivel" value="Médio">
+                            🟠 Médio
+                        </label>
+                        <label>
+                            <input type="radio" name="nivel" value="Grave">
+                            🔴 Grave
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div class="campo">
+                    <label for="tipo_infracao">Tipo de Infração</label>
+                    <select id="tipo_infracao" name="tipo_infracao" required>
+                        <option value="">Selecione o tipo...</option>
+                        <option value="Bullying">Bullying</option>
+                        <option value="Acidente">Acidente</option>
+                        <option value="Mal-Estar">Mal-Estar</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="campo" style="width: 100%; margin-top: 15px;">
+                <label for="descricao">Descrição dos Fatos</label>
+                <textarea id="descricao" name="descricao" rows="5" required placeholder="Descreva detalhadamente a ocorrência..."></textarea>
+            </div>
+
+            <div class="botoes" style="margin-top: 20px;">
+                <button type="submit" class="btn-sio-enviar">Enviar Ocorrência</button>
+                <button type="button" class="btn-sio-rascunho">Salvar Rascunho</button>
+            </div>
+
+        </form>
     </div>
 
-</div>
-
-<div class="main-content">
-
-<div class="titulo">
-➕ CRIAR OCORRÊNCIA
-</div>
-
-<div class="card">
-
-<form action="/ocorrencias/salvar" method="POST">
-
-<div class="linha">
-
-<div class="campo">
-
-<label>Nome do Aluno</label>
-
-<input
-type="text"
-name="aluno"
-required>
-
-</div>
-
-<div class="campo">
-
-<label>Turma</label>
-
-<select name="turma">
-
-<option>1º Ano A</option>
-
-<option>1º Ano B</option>
-
-<option>2º Ano A</option>
-
-<option>2º Ano B</option>
-
-<option>3º Ano A</option>
-
-<option>3º Ano B</option>
-
-</select>
-
-</div>
-
-<div class="campo">
-
-<label>Data</label>
-
-<input
-type="date"
-name="data_ocorrencia">
-
-</div>
-
-</div>
-
-<div class="linha">
-
-<div class="campo">
-
-<label>Nível</label>
-
-<div class="niveis">
-
-<label>
-
-<input
-type="radio"
-name="nivel"
-value="Leve">
-
-🟢 Leve
-
-</label>
-
-<label>
-
-<input
-type="radio"
-name="nivel"
-value="Médio">
-
-🟠 Médio
-
-</label>
-
-<label>
-
-<input
-type="radio"
-name="nivel"
-value="Grave">
-
-🔴 Grave
-
-</label>
-
-</div>
-
-</div>
-
-<div class="campo">
-
-<label>Tipo</label>
-
-<select name="tipo_infracao">
-
-<option>Bullying</option>
-
-<option>Acidente</option>
-
-<option>Mal-Estar</option>
-
-<option>Outros</option>
-
-</select>
-
-</div>
-
-</div>
-
-<label>Descrição</label>
-
-<textarea
-name="descricao"></textarea>
-
-<div class="botoes">
-
-<button type="submit" class="btn-sio-enviar">
-    Enviar
-</button>
-
-<button
-type="button"
-class="btn-sio-enviar"
-style="background:#f39c12;">
-Salvar Rascunho
-</button>
-
-</div>
-
-</form>
-
-</div>
-
-</div>
+</main>

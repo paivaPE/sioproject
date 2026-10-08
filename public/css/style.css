@@ -383,8 +383,8 @@ body {
     transition: transform 0.2s;
 }
 
-.card-azul { background-color: #0056b3; }
-.card-laranja { background-color: #ff9800; }
+.card-azul { background-color: navy; }
+.card-laranja { background-color: brown; }
 
 .card-num-icon {
     font-size: 70px;
@@ -409,7 +409,7 @@ body {
 
 /* BOTOES INFERIORES MAIORES (Quadrados Grandes como no Canva) */
 .card-sio-botao {
-    background-color: #0056b3;
+    background-color: navy;
     color: white;
     border-radius: 12px;
     height: 220px; /* Aumentado de 180px para 220px para ficarem robustos */
