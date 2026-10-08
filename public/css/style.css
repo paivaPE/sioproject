@@ -1,4 +1,4 @@
-/* Configurações Globais e Paleta de Cores do SIO */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body {
     color: #333;
 }
 
-/* Topbar Azul Escuro Corporativo */
+
 .sio-topbar {
     background-color: #103154;
     color: #ffffff;
@@ -39,14 +39,14 @@ body {
     font-weight: 600;
 }
 
-/* Conteúdo Centralizado */
+
 .main-content {
     max-width: 1200px;
     margin: 30px auto;
     padding: 0 20px;
 }
 
-/* Boxes Estilo Painel Integrado */
+
 .box-titulo {
     background-color: #1a4a75;
     color: white;
@@ -67,7 +67,7 @@ body {
     margin-bottom: 20px;
 }
 
-/* Formulários Alinhados em Colunas */
+
 .form-linha {
     display: flex;
     gap: 20px;
@@ -89,7 +89,7 @@ body {
     font-size: 14px;
 }
 
-/* Inputs Modernos e Arredondados */
+
 .input-sio-cinza {
     width: 100%;
     padding: 10px 14px;
@@ -108,7 +108,7 @@ body {
 
 /* Botão de Ação Principal */
 .btn-sio-enviar {
-    background-color: #27ae60;
+    background-color: #1e7e34;
     color: white;
     border: none;
     padding: 12px 25px;
@@ -120,7 +120,7 @@ body {
 }
 
 .btn-sio-enviar:hover {
-    background-color: #219653;
+    background-color: #1e7e34;
 }
 
 /* Tabelas Estilizadas e Alinhadas */
@@ -151,7 +151,7 @@ body {
     background-color: #fcfcfc;
 }
 
-/* Indicadores Visuais para os Níveis de Ocorrência */
+
 .circulo-cor {
     display: inline-block;
     width: 10px;
@@ -163,9 +163,7 @@ body {
 .média { background-color: #e67e22; }
 .grave { background-color: #e74c3c; }
 
-/* =============================================================
-   ESTILIZAÇÃO DA TELA DE ENTRADA / SELEÇÃO DE PERFIL (image_661459.jpg)
-   ============================================================= */
+
 .body-entrada {
     background: linear-gradient(180deg, #3fa5f1 0%, #a5dcff 100%);
     min-height: 100vh;
@@ -187,20 +185,20 @@ body {
     opacity: 0.8;
     pointer-events: none;
 }
-/* Canto superior direito */
+
 .body-entrada::before {
     top: -50px;
     right: -50px;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M100,0 C80,20 50,20 40,40 C30,60 50,90 30,100" fill="%2327ae60" opacity="0.7"/><path d="M100,0 C70,10 60,30 50,50 C40,70 60,80 50,100" fill="%23219653"/></svg>');
 }
-/* Canto inferior esquerdo */
+
 .body-entrada::after {
     bottom: -50px;
     left: -50px;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,100 C20,80 20,50 40,40 C60,30 90,50 100,30" fill="%232ecc71" opacity="0.6"/><path d="M0,100 C10,70 30,60 50,50 C70,40 80,60 100,50" fill="%2327ae60"/></svg>');
 }
 
-/* Container Centralizado */
+
 .entrada-container {
     text-align: center;
     max-width: 450px;
@@ -209,7 +207,7 @@ body {
     z-index: 2;
 }
 
-/* Logo SIO improvisado via CSS enquanto você não coloca a imagem real */
+
 .logo-sio-provisorio {
     font-size: 54px;
     font-weight: 900;
@@ -227,9 +225,9 @@ body {
     margin-bottom: 35px;
 }
 
-/* Texto de Orientação */
+
 .entrada-texto {
-    color: #1a4a75;
+    color: #1e7e34;
     font-size: 14px;
     font-weight: 600;
     line-height: 1.5;
@@ -237,7 +235,7 @@ body {
     padding: 0 15px;
 }
 
-/* Botões em Formato de Pílula com Degradê Transicional */
+
 .btn-perfil {
     display: block;
     width: 80%;
@@ -251,7 +249,7 @@ body {
     letter-spacing: 1px;
     background: linear-gradient(90deg, #56ccf2 0%, #0056b3 100%);
     border: 2px solid navy;
-    border-radius: 50px; /* Formato de Pílula da imagem */
+    border-radius: 50px; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -262,27 +260,25 @@ body {
     background: linear-gradient(90deg, #0056b3 0%, #56ccf2 100%);
 }
 
-/* Container da Imagem do Logo */
+
 .logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px; /* Espaço entre o logo e o texto */
+    margin-bottom: 30px; 
     width: 100%;
 }
 
-/* Configuração da Imagem do Logo */
+
 .logo-img {
-    max-width: 320px; /* Controla a largura máxima para ficar idêntico ao Canva */
-    height: auto;     /* Mantém a proporção correta sem achatar a imagem */
+    max-width: 320px; 
+    height: auto;     
     object-fit: contain;
 }
 
-/* =============================================================
-   ESTILIZAÇÃO DA DASHBOARD PRINCIPAL - VERSÃO AJUSTADA
-   ============================================================= */
 
-/* Topbar mais larga (Aumentamos o padding de 10px para 22px) */
+
+
 .sio-dashboard-topbar {
     background: linear-gradient(90deg, #3fa5f1 0%, #a5dcff 100%);
     padding: 22px 80px; 
@@ -292,10 +288,10 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* Seta de voltar reposicionada e pintada em Navy (#103154) */
+
 .btn-voltar-dashboard {
-    font-size: 45px;      /* Seta ligeiramente maior */
-    color: #103154;       /* Alterado para a cor Navy do protótipo */
+    font-size: 45px;     
+    color: #103154;      
     text-decoration: none;
     margin-right: 25px;
     font-weight: 900;
@@ -369,7 +365,7 @@ body {
     gap: 30px;
 }
 
-/* Cards Numéricos (Superiores) */
+
 .card-sio-num {
     border-radius: 12px;
     padding: 24px;
@@ -407,12 +403,11 @@ body {
     font-weight: 800;
 }
 
-/* BOTOES INFERIORES MAIORES (Quadrados Grandes como no Canva) */
 .card-sio-botao {
     background-color: navy;
     color: white;
     border-radius: 12px;
-    height: 220px; /* Aumentado de 180px para 220px para ficarem robustos */
+    height: 220px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -421,7 +416,7 @@ body {
     padding: 25px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 18px; /* Fonte aumentada para melhor leitura */
+    font-size: 18px; 
     text-transform: uppercase;
     box-shadow: 0 6px 16px rgba(0,0,0,0.12);
     transition: background 0.2s, transform 0.2s;
@@ -429,11 +424,11 @@ body {
     overflow: hidden;
 }
 
-/* Efeito interno de marca d'água dos botões */
+
 .card-sio-botao::before {
     content: "📋";
     position: absolute;
-    font-size: 130px; /* Ícones internos expandidos */
+    font-size: 130px; 
     opacity: 0.08;
     bottom: -25px;
     right: -15px;
